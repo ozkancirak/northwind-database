@@ -1,0 +1,334 @@
+/* Modern CSS with variables for theming */
+:root {
+  --primary-color: #54a0ff;
+  --secondary-color: #2e86de;
+  --accent-color: #ff6b6b;
+  --text-color: #f5f6fa;
+  --background-color: #2f3640;
+  --card-background: #353b48;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --transition-speed: 0.3s;
+  --bak-color: #0097e6;
+  --bacpac-color: #55efc4;
+  --overlay-color: rgba(0, 0, 0, 0.8);
+  --sql-color: #9b59b6;
+}
+
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: url("../assets/images/stitch.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-speed) ease;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.1)),
+    url("../assets/images/stitch.png");
+}
+
+/* Container styles */
+.container {
+  width: 80%;
+  max-width: 400px;
+  padding: 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 52, 54, 0.5),
+    rgba(53, 59, 72, 0.6)
+  );
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  text-align: center;
+  transition: all 0.3s ease;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: auto;
+}
+
+/* Heading styles */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Download buttons container */
+.download-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  flex-grow: 0;
+  justify-content: center;
+}
+
+/* Button group styles */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* Main button styles */
+.main-btn {
+  position: relative;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 1;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.northwind {
+  background: linear-gradient(135deg, #2e86de, #54a0ff);
+  box-shadow: 0 4px 15px rgba(46, 134, 222, 0.3);
+}
+
+.sql-copy {
+  background: linear-gradient(135deg, #8e44ad, #9b59b6);
+  box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
+  margin-top: 1rem;
+}
+
+.main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.main-btn:active {
+  transform: scale(0.98);
+}
+
+.main-btn.loading {
+  position: relative;
+  cursor: wait;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 8%,
+    rgba(255, 255, 255, 0.2) 18%,
+    rgba(255, 255, 255, 0.1) 33%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.5s linear infinite;
+}
+
+.main-btn.loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+/* Format options styles */
+.format-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  opacity: 0;
+  margin: 0;
+  pointer-events: none;
+  width: 100%;
+}
+
+.format-options.show {
+  height: auto;
+  opacity: 1;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  pointer-events: all;
+}
+
+/* Format button styles */
+.format-btn {
+  position: relative;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+  background: transparent;
+  box-shadow: none;
+  z-index: 2;
+}
+
+.format-btn.bak {
+  background: transparent;
+}
+
+.format-btn.bacpac {
+  background: transparent;
+}
+
+.format-btn:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.format-btn:active {
+  filter: brightness(0.95);
+}
+
+.format-btn .indicator {
+  display: none;
+}
+
+/* Success message styles */
+.success-message {
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(46, 213, 115, 0.1),
+    rgba(46, 213, 115, 0.2)
+  );
+  color: #2ed573;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(46, 213, 115, 0.2);
+  text-align: center;
+}
+
+.success-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer styles */
+.footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.footer:hover {
+  opacity: 1;
+}
+
+.author-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.author-link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+/* Remove the underline styles */
+.author-link::after {
+  content: none;
+}
+
+.author-link:hover::after {
+  content: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .main-btn {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .format-btn {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

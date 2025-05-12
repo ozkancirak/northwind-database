@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database Resources</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <h1>Northwind Database</h1>
+      <div class="download-buttons">
+        <div class="button-group">
+          <button class="main-btn northwind" data-name="Northwind">
+            Download Northwind
+          </button>
+          <div class="format-options" id="northwind-formats">
+            <a
+              href="assets/databases/Northwind.bak"
+              class="format-btn bak"
+              data-name="Northwind"
+              data-format="bak"
+            >
+              .bak format
+            </a>
+            <a
+              href="assets/databases/Northwind.bacpac"
+              class="format-btn bacpac"
+              data-name="Northwind"
+              data-format="bacpac"
+            >
+              .bacpac format
+            </a>
+          </div>
+        </div>
+        <div class="button-group">
+          <button class="main-btn sql-copy" id="copy-sql-btn">
+            Copy Northwind SQL Script
+          </button>
+        </div>
+      </div>
+      <div class="success-message"></div>
+      <div class="footer">
+        Made with ❤️ by
+        <a
+          href="https://github.com/ozkancirak"
+          target="_blank"
+          class="author-link"
+          >Özkan Çırak</a
+        >
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
